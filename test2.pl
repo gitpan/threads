@@ -7,12 +7,10 @@ use Devel::Peek;
 BEGIN { plan tests => 12 };
 use threads;
 
+use Carp;
 
-threads->create(sub { 
-    my $self = threads->self();
-    print $self->tid();
-    print "\n";
-})->join();
+threads->create(sub { croak "foo" })->join();
+print "foo\n";
 
 
 

@@ -282,6 +282,22 @@ BOOT:
 	    SV* temp2 = newSViv((IV)shared_sv_space );
 	    sv_setsv( temp , temp2 );
 	}
+	{
+		ithread* thread = malloc(sizeof(ithread));
+		SV* thread_tid_ptr;
+		SV* thread_ptr;
+		MUTEX_INIT(&thread->mutex);
+		thread->tid = 0;
+#ifdef WIN32
+		thread->thr = GetCurrentThreadId();
+#else
+		thread->thr = pthread_self();
+#endif
+		thread_tid_ptr = Perl_newSViv(shared_sv_space, (IV) thread->thr);
+		thread_ptr = Perl_newSViv(shared_sv_space, (IV) thread);	
+		Perl_hv_store_ent(shared_sv_space,threads, thread_tid_ptr, thread_ptr,0);
+	   	SvREFCNT_dec(thread_tid_ptr);
+	}
 	MUTEX_INIT(&create_mutex);
 	MUTEX_INIT(&thr_list_mutex);
 

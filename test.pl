@@ -78,7 +78,8 @@ threads->create(sub {
 })->join();
 skip('Ignore','Ignore');
 
-
+#check support for threads->self() in main thread
+ok(0,threads->self->tid());
 
 
 

@@ -1,5 +1,8 @@
 Revision history for Perl extension threads.
 
+0.03  Mon Jul  2 12:00:50 CEST 2001
+	Fixed bug with threads->self() in main thread, thanks Hackworth!
+
 0.02  Sat Jun 30 09:41:00 GMT 2001
 	Fixed bug in threads->self() reported by Hackworth
  

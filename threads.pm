@@ -37,7 +37,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw(
 	
 );
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub new {
     my $class = shift;
@@ -135,5 +135,7 @@ Plenty of bugs!
 L<perl>, L<perlcall>, L<perlembed>, L<perlguts>
 
 =cut
+
+
 
 
