@@ -21,8 +21,14 @@ void thread_run(ithread* thread) {
 
 	PERL_SET_CONTEXT(shared_sv_space);
 	MUTEX_LOCK(&thr_list_mutex);
+#ifdef WIN32
+	thread->thr = GetCurrentThreadId();
+#else
+	thread->thr = pthread_self();
+#endif
 	thread_tid_ptr = Perl_newSViv(shared_sv_space, (IV) thread->thr);
 	thread_ptr = Perl_newSViv(shared_sv_space, (IV) thread);	
+/*	printf("Storing %d:%d in hash\n",(I32) thread->thr, (I32) thread); */
 	Perl_hv_store_ent(shared_sv_space,threads, thread_tid_ptr, thread_ptr,0);
    	SvREFCNT_dec(thread_tid_ptr);
 	MUTEX_UNLOCK(&thr_list_mutex);
@@ -194,12 +200,13 @@ SV* thread_self (char* class) {
 #endif
 	MUTEX_LOCK(&thr_list_mutex);
 	thread_entry = Perl_hv_fetch_ent(shared_sv_space,threads, thread_tid_ptr, 0,0);
+
 	thread_ptr = HeVAL(thread_entry);
 	MUTEX_UNLOCK(&thr_list_mutex);
 	SvREFCNT_dec(thread_tid_ptr);	
 	PERL_SET_CONTEXT(old_context);
 	
-	
+
 
 	obj_ref = newSViv(0);
 	obj = newSVrv(obj_ref, class);

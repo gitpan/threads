@@ -37,7 +37,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw(
 	
 );
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new {
     my $class = shift;
@@ -76,6 +76,8 @@ threads - Perl extension allowing use of interpreter based threads from perl
   $thread->new(sub { print "I am a thread"},"argument");
   $thread->join();
   $thread->detach();
+  my $thread = threads->self();
+  $thread->tid();
 
 =head1 DESCRIPTION
 
@@ -114,6 +116,9 @@ Simon Cozens <lt>simon at brecon.co.uk<gt>
 Being there to answer zillions of annoying questions 
 
 Rocco Caputo <lt>troc at netrus.net<gt>
+
+Vipul Ved Prakash <lt>mail at vipul.net<gt>
+Helping with debugging.
 
 =head1 BUGS
 

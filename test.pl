@@ -67,6 +67,17 @@ foreach my $thread (@threads) {
 	$thread->join();
 }
 ok(1);
+threads->create(sub { 
+    my $self = threads->self();
+    ok($self->tid(),57);
+})->join();
+skip('Ignore','Ignore');
+threads->create(sub { 
+    my $self = threads->self();
+    ok($self->tid(),58);
+})->join();
+skip('Ignore','Ignore');
+
 
 
 
