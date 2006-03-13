@@ -1,63 +1,19 @@
+#ifndef _THREADS_H_
+#define _THREADS_H_
 
-#include "EXTERN.h"
-#include "perl.h"
-#include "XSUB.h"
-#include <stdio.h>
-#include <stdlib.h>
-
-#ifdef WIN32
-#include <windows.h>
-#include <win32thread.h>
-#else
-#include <pthread.h>
-#include <thread.h>
+/* Needed for 5.8.0 */
+#ifndef CLONEf_JOIN_IN
+#  define CLONEf_JOIN_IN        8
+#endif
+#ifndef SAVEBOOL
+#  define SAVEBOOL(a)
 #endif
 
-typedef struct {
-  PerlInterpreter *interp;    /* The threads interpreter */
-  I32 tid;              /* Our thread */
-  perl_mutex mutex; 		/* our mutex */
-  I32 count;			/* how many threads have a reference to us */
-  signed char detached;		/* are we detached ? */
-  SV* init_function;
-  SV* params;
+/* Supposed to be in Winbase.h */
 #ifdef WIN32
-  DWORD	thr;
-  HANDLE handle;
-#else
-  pthread_t thr;
+#  ifndef STACK_SIZE_PARAM_IS_A_RESERVATION
+#    define STACK_SIZE_PARAM_IS_A_RESERVATION 0x00010000
+#  endif
 #endif
-} ithread;
 
-
-
-static perl_mutex create_mutex;  /* protects the creation of threads ??? */
-static perl_mutex thr_list_mutex; /* protects the lists of threads */
-
-
-I32 tid_counter = 1;
-HV* threads; /* hash containing all threads */
-
-
-PerlInterpreter *shared_sv_space;   /* use for shared variables */
-
-
-/* internal functions */
-#ifdef WIN32
-THREAD_RET_TYPE thread_run(LPVOID arg);
-#else
-void thread_run(ithread* thread);
 #endif
-void thread_destruct(ithread* thread);
-
-/* Perl mapped functions to iThread:: */
-SV* thread_create(char* class, SV* function_to_call, SV* params);
-I32 thread_tid (SV* obj);
-void thread_join(SV* obj);
-void thread_detach(SV* obj);
-
-
-
-
-
-
