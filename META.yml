@@ -1,14 +1,12 @@
---- #YAML:1.0
-name:                threads
-version:             1.18
-abstract:            Perl interpreter-based threads
-license:             perl
-generated_by:        ExtUtils::MakeMaker version 6.30_01
-author:              Artur Bergman <sky AT crucially DOT net>
-distribution_type:   module
-requires:     
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         threads
+version:      1.19
+version_from: threads.pm
+installdirs:  perl
+requires:
     threads::shared:               0
     XSLoader:                      0
-meta-spec:
-    url: <http://module-build.sourceforge.net/META-spec-new.html>;
-    version: 1.1
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.30
