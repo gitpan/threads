@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                threads
-version:             1.44
+version:             1.45
 abstract:            Perl interpreter-based threads
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.31
