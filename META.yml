@@ -1,9 +1,11 @@
 --- #YAML:1.0
 name:                threads
-version:             1.67
+version:             1.68
 abstract:            Perl interpreter-based threads
 license:             perl
-generated_by:        ExtUtils::MakeMaker version 6.36_01
+author:              
+    - Artur Bergman, Jerry D. Hedden <jdhedden AT cpan DOT org>
+generated_by:        ExtUtils::MakeMaker version 6.43_01
 distribution_type:   module
 requires:     
     Carp:                          0
@@ -13,10 +15,9 @@ requires:
     IO::File:                      0
     overload:                      0
     strict:                        0
+    Test::More:                    0
     warnings:                      0
     XSLoader:                      0
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
-    version: 1.2
-author:
-    - Artur Bergman, Jerry D. Hedden <jdhedden AT cpan DOT org>
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
