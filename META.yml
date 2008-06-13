@@ -1,11 +1,11 @@
 --- #YAML:1.0
 name:                threads
-version:             1.69
+version:             1.71
 abstract:            Perl interpreter-based threads
 license:             perl
 author:              
     - Artur Bergman, Jerry D. Hedden <jdhedden AT cpan DOT org>
-generated_by:        ExtUtils::MakeMaker version 6.42
+generated_by:        ExtUtils::MakeMaker version 6.44
 distribution_type:   module
 requires:     
     Carp:                          0
