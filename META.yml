@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               threads
-version:            1.82
+version:            1.83
 abstract:           Perl interpreter-based threads
 author:
     - Artur Bergman, Jerry D. Hedden <jdhedden AT cpan DOT org>
