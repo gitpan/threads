@@ -1,5 +1,8 @@
 Revision history for Perl extension threads.
 
+1.91 Tue Feb  4 21:37:39 2014
+	- Sync from blead
+
 1.89 Mon Sep 30 14:49:47 2013
 	- POD updates for alarm() sample code and the specifics of _handle()
 
