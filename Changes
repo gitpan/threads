@@ -1,5 +1,8 @@
 Revision history for Perl extension threads.
 
+1.92 Tue Feb  4 23:35:31 2014
+	- Version bump for blead
+
 1.91 Tue Feb  4 21:37:39 2014
 	- Sync from blead
 
